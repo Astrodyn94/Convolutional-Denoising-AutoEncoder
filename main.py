@@ -10,12 +10,15 @@ import os
 import warnings
 import tqdm
 from Default_option import * 
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
 warnings.filterwarnings("ignore")
 
 opt = TrainOptions()
 
-writer = SummaryWriter('runs/' + opt.name + '_02')
+writer = SummaryWriter('runs/' + opt.name + '_08')
 os.environ['CUDA_VISIBLE_DEVICES'] = opt.GPUs
 device = torch.device('cuda')
 
@@ -89,3 +92,12 @@ for i in range(opt.niter):
     writer.add_scalar('data/val_loss' , print_val_loss , i)
     print(' epoch : ' , i , ' Val Loss ' , print_val_loss)
 
+    if i % 5 ==0:
+        plt.subplot(1,3,1)
+        plt.imshow(inputs[0,:].detach().cpu().numpy().reshape(opt.image_size,opt.image_size,3).astype(np.uint8))
+        plt.subplot(1,3,2)
+        plt.imshow(target[0,:].detach().cpu().numpy().reshape(opt.image_size,opt.image_size,3).astype(np.uint8))
+        plt.subplot(1,3,3)
+        plt.imshow(final_output[0,:].detach().cpu().numpy().reshape(opt.image_size,opt.image_size,3).astype(np.uint8))
+
+        plt.savefig(name[0].split('/')[-1][:-4] + '_' + str(i) + '.png')
