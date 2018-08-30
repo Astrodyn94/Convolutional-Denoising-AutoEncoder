@@ -17,6 +17,10 @@ Dataset(dir)
 Loss curve during training (up : train loss // down : validation loss)
 ![1](./Loss_Curve.PNG)
 
+## Training Details
+1000 epoch with lr = 0.004 (see Default_option.py for more detail)
+Crop the input images into (128 X 128)
+
 ## Input / Target(Original) / Output 
 Trained and tested with VDSR dataset
 There are some blurrings..in the output image
@@ -25,3 +29,5 @@ There are some blurrings..in the output image
 ![4](./296007_935.png)
 ![5](./106024_945.png)
 
+## Limitations
+Small number of dataset
