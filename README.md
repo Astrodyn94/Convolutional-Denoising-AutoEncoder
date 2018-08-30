@@ -13,5 +13,14 @@ Dataset(dir)
   test
     66 Images
 ```
+## lOSS CURVE
+Loss curve during training (up : train loss // down : validation loss)
+![1](./Loss_Curve.PNG)
 
+## Input / Target(Original) / Output 
+Trained and tested with VDSR dataset
+There are some blurrings..in the output image
+![2](./103070_985.PNG)
+![3](./8023_995.PNG)
+![4](./296007_935.PNG)
 
